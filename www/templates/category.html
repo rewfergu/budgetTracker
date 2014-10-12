@@ -1,0 +1,22 @@
+<ion-view title="{{ currentCategory }}">
+    <ion-content padding="false" id="transactionList">
+      <ion-list id="transactionList">
+		<ion-item ng-repeat="item in transactions">
+			<p class="value">{{ item.value | currency: "$"}}</p>
+			<p class="date">
+				{{ item.date | date}}
+			</p>
+			<hr>
+			<p class="location">
+				<a href="http://maps.apple.com/?ll={{ item.location }}&q={{ item.location}}" class="ion-ios7-location">
+					Location: {{ item.location }}
+				</a>
+			</p>
+			<p class="notes">Notes: {{ item.notes }}</p>
+		</ion-item>
+		</ion-list>
+		<div class="padding">
+		<a class="button button-icon-left ion-ios7-arrow-left" href="#/tab/categories">Back</a>
+		</div>
+    </ion-content>
+  </ion-view>

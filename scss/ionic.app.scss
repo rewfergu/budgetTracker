@@ -1,0 +1,276 @@
+/*
+To customize the look and feel of Ionic, you can override the variables
+in ionic's _variables.scss file.
+
+For example, you might change some of the default colors:
+
+$light:                           #fff !default;
+$stable:                          #f8f8f8 !default;
+$positive:                        #4a87ee !default;
+$calm:                            #43cee6 !default;
+$balanced:                        #66cc33 !default;
+$energized:                       #f0b840 !default;
+$assertive:                       #ef4e3a !default;
+$royal:                           #8a6de9 !default;
+$dark:                            #444 !default;
+*/
+
+// The path for our ionicons font files, relative to the built CSS in www/css
+$ionicons-font-path: "../lib/ionic/fonts" !default;
+
+// Include all of Ionic
+
+@import "www/lib/ionic/scss/ionic";
+/*ion-content {
+	display: flex;
+	min-height: 100%;
+	align-items: stretch;
+	.scroll {
+		background: $calm;
+		width: 100%;
+		min-height: 100%;
+	}
+}*/
+
+.pane, .view {
+	/*background-color: white;*/
+	background: $calm;
+}
+
+.tab-item .icon {
+	height: 24px;
+	font-size: 24px;
+	margin-top: 4px;
+}
+
+.button.icon-left, .button-icon-left {
+	line-height: 53px;
+}
+
+.button .icon:before, .button.icon:before, .button.icon-left:before, .button.icon-right:before {
+	line-height: 53px;
+}
+
+.button-icon-left:before {
+	margin-right: 3px;
+}
+
+.editForm {
+	width: 100%;
+	height: 200%;
+	background: rgba(0,0,0,0);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 999;
+	-webkit-transform: translate(100%, 0%);
+	transition: -webkit-transform .5s, background 3s;
+	.card {
+		background: #fff;
+		box-shadow: 0px 0px 20px rgba(0,0,0,.75);
+		.item-divider {
+			text-align: center;
+		}
+		.item {
+			font-size: 14px;
+		}
+		.item.name {
+			border-top: 1px solid #ddd;
+		}
+		.dollars {
+			background: rgba(0, 0, 0, 0.29);
+			transition: all .25s;
+			width: 75%;
+			margin: 1rem auto;
+			text-align: center;
+			border-radius: 30px;
+			padding: .75rem 0rem;
+			border-top: 1px solid rgba(0, 0, 0, 0.25);
+			border-bottom: 1px solid rgba(255, 255, 255, 0);
+			color: #fff;
+			font-size: 1.3rem;
+			font-weight: 700;
+			position: relative;
+			.display {
+				position: relative;
+			}
+			.dollarInput {
+				background: transparent;
+				color: #fff;
+				font-size: 1.3rem;
+				font-weight: 700;
+				position: absolute;
+				right: 0px;
+				top: 0%;
+				color: rgba(0,0,0,0);
+				display: inline-block;
+				height: 100%;
+				width: 100%;
+				/*border: 1px dotted green;*/
+				text-align: right;
+				&:focus {
+					border: 1px solid red;
+					top: -999rem;
+				}
+			}
+			&.active {
+				background-color: $balanced;
+			}
+		}
+		.date {
+			font-style: italic;
+			color: #ccc;
+			border-bottom: 1px dashed #ccc;
+		}
+		.category {
+			margin-bottom: 0;
+		}
+		textarea.notes {
+			padding: .25rem;
+			background: rgba(0,0,0,.05);
+		}
+	}
+	&.active {
+		-webkit-transform: translate(0%, 0%);
+		background: rgba(0,0,0,.5);
+	}
+}
+
+#budgetOverview {
+	.budgetList {
+		display: block;
+	}
+	.item-complex .item-content {
+		padding: 16px;
+	}
+	.item:first-child {
+		border-top: none;
+	}
+	.item.item-calm {
+		/*border-color: #6F97A8;
+		background-color: #8FA9B5;*/
+		color: #fff;
+		.item-note {
+			color: #fff;
+		}
+	}
+	.item {
+		i:before {
+			width: 10px;
+		}
+	}
+	.variableExpenses, .totalExpenses, .result {
+		padding-left: 31px;
+	}
+	.list .item.item-accordion {
+	  /*transition: 0.9s all linear;*/
+	  line-height: 20px;
+	}
+	.list .item.item-accordion.ng-hide {
+	  line-height: 0px;
+	}
+}
+
+.currentTotal {
+	padding: 1rem;
+	/*background: $stable;*/
+	background: white;
+	span {
+		display: block;
+		text-align: center;
+		font-size: 1.75rem;
+		font-weight: 400;
+		background: rgba(0,0,0,.51);
+		border: 1px solid rgba(0,0,0,.3);
+		border-radius: 1em;
+		padding: .5em;
+		margin: 0 2em;
+		color: white;
+		text-decoration: none;
+	}
+}
+
+#categoryList {
+	display: block;
+	.item {
+		border-color: rgba(255,255,255,.15);
+		color: #fff;
+		background-color: transparent;
+	}
+	.item:first-child {
+		border-top: none;
+	}
+	.item-note {
+		color: #fff;
+	}
+	.label {
+		padding: 16px;
+		transition: background-color .5s;
+	}
+	.item-complex .item-content, .item-radio .item-content {
+		background-color: transparent;
+		padding: 0;
+	}
+	canvas {
+		float:right;
+		margin-left: 10px;
+		max-width: 20px;
+		max-height: 20px;
+	}
+}
+
+@media (min-width: 640px) {
+	.currentTotal, .budgetList {
+		width: 50%;
+	}
+	#categoryList {
+		display: inline-block;
+		width: 50%;
+		height: 100%;
+	}
+	.editForm {
+		width: 50%;
+		height: 200%;
+		background: rgba(0,0,0,0);
+		position: fixed;
+		top: 0;
+		left: 50%;
+		z-index: 999;
+		-webkit-transform: translate(0%, 0%);
+		background: rgba(0,0,0,.5);
+	}
+}
+
+#transactionList {
+	hr {
+		border: none;
+		border-bottom: 1px dashed #ccc;
+	}
+	p {
+		margin: 0;
+		&.date {
+			font-style: italic;
+			font-weight: 700;
+		}
+		&.value {
+			float: right;
+			font-weight: 700;
+		}
+		&.location {
+			a {
+				color: #666;
+			}
+			a:before {
+				display: inline-block;
+				margin-right: 2px;
+				color: $balanced;
+			}
+		}
+		&.notes {
+
+		}
+	}
+	a {
+		text-decoration: none;
+	}
+}

@@ -1,0 +1,79 @@
+<ion-view title="Budget Overview">
+  	<ion-content id="budgetOverview">
+		<ion-list class="budgetList">
+			
+			<ion-item class="fixedExpenses cat"
+				ng-click="fixedExpenseToggle()"
+		    	ng-class="{active: fixedExpenseStatus}">
+				<i class="icon" ng-class="fixedExpenseStatus ? 'ion-ios7-arrow-up' : 'ion-ios7-arrow-down'"></i>
+				Fixed Expenses: <span class="item-note">{{ info['fixed-expenses'] | currency: "$" }}</span>
+				
+			</ion-item>
+
+			<ion-item class="item-accordion item-calm"
+		        ng-repeat="(id, item) in fixedExpenses"
+		        ng-show="fixedExpenseStatus">
+		        <i class="ion-ios7-arrow-right"></i>
+		        {{item.name}} 
+		        <span class="item-note">{{ item.total | currency: "$" }}</span>
+		        <ion-option-button class="button button-icon-left ion-ios7-gear" ng-click="editExpenses(fixedExpenses, id)">Edit</ion-option-button>
+		    </ion-item>
+
+			<ion-item class="variableExpenses cat">
+				Variable Expenses: <span class="item-note">{{ info['variable-expenses'] | currency: "$" }}</span>
+			</ion-item>
+
+			<ion-item class="income cat">
+				<i class="ion-ios7-arrow-right"></i>
+				Income: <span class="item-note">{{ info.income | currency: "$" }}</span>
+				<ion-option-button class="button button-icon-left ion-ios7-gear" ng-click="edit(info, 'income')">Edit</ion-option-button>
+			</ion-item>
+
+			<ion-item class="totalExpenses cat">
+				Fixed + Variable: <span class="item-note">{{ info['fixed-expenses'] + info['variable-expenses'] | currency: "$" }}</span>
+			</ion-item>
+
+			<ion-item class="offset cat">
+				<i class="ion-ios7-arrow-right"></i>
+				Offset <span class="item-note">{{ info['offset'] | currency: "$" }}</span>
+				<ion-option-button class="button button-icon-left ion-ios7-gear" ng-click="edit(info, 'offset')">Edit</ion-option-button>
+			</ion-item>
+
+			<ion-item class="result cat">
+				Result: <span class="item-note">{{ info.income - (info['fixed-expenses'] + info['variable-expenses'] + info['offset']) | currency: "$" }}</span>
+			</ion-item>
+
+			<ion-item class="item-button-right">
+				Reset Budget
+				<button class="button button-assertive" ng-click="confirmReset()">
+					<i class="ion-coffee"></i>
+				</button>
+			</ion-item>
+		</ion-list>
+
+		<div class="editForm" ng-class="{active: editStatus}">
+			<div class="card">
+				<div class="item item-divider">
+					{{ editMode }}
+				</div>
+				<div class="list list-inset">
+				  <label class="item item-input">
+				    <input type="text" placeholder="Name" ng-model="editVal.name">
+				  </label>
+				  <label class="item item-input" ng-hide="resetStatus">
+				    <input type="number" placeholder="Value" ng-model="editVal.val">
+				  </label>
+				  <label class="item item-input" ng-show="resetStatus">
+				    <input type="text" placeholder="text goes here" ng-model="editVal.val">
+				  </label>
+				</div>
+				<div class="item item-divider">
+					<div class="button-bar">
+						<a class="button button-assertive" ng-click="cancelValues()">Cancel</a>
+						<a class="button button-balanced" ng-click="saveValues()">Save</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

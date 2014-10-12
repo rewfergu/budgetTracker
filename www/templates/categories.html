@@ -1,0 +1,70 @@
+<ion-view title="Budget Tracker">
+  <ion-content padding="false">
+     <div class="currentTotal" data-income="{{ info.income }}" data-fixed="{{ info['fixed-expenses'] }}" >
+     	<span>{{ info.income - (info['fixed-expenses'] + info['variable-expenses']) | currency: "$" }}</span>
+     </div>
+     <ion-list id="categoryList">
+		<ion-item 
+			ng-repeat="cat in budget"
+			class="categoryLink" 
+            ng-click ="addTransaction(cat.name, cat.total)">
+			
+			<div class="label" 
+				data-category="{{ cat.name }}" 
+				data-budget="{{ cat.budget }}" 
+				data-total="{{ cat.total }}" 
+				colorGrade >
+				<!--  style="background-color:hsl({{ ((cat.budget - cat.total)/cat.budget*100) }}, 20%, 60%)" -->
+				
+				{{ cat.name }} 
+	            <span class="total item-note">
+	            	{{ cat.budget - cat.total | currency: "$" }}
+	            	<span piechart ></span>
+	            </span>
+        	</div>
+			
+		<ion-option-button 
+			class="button icon ion-android-information"
+			href="#/category" 
+			class="infoLink" 
+			data-catref="{{ cat.name }}" 
+			data-budget="{{ cat.budget }}" 
+			ng-click="selectCategory(cat.name, cat.budget, cat.total)"
+			></ion-option-button>
+		</ion-item>
+	</ion-list>
+
+	<div class="editForm" ng-class="{active: editStatus}">
+		<div class="card">
+			<div class="item item-divider">
+				Add Transaction
+			</div>
+			<p  class="dollars"
+				ng-click="focusInput()"
+    			ng-class="inputFocus? 'active' : ''"
+				>
+				<span class="display">{{ newTransaction.value/100 | currency: "$" }}</span>
+				<input class="dollarInput" type="number" ng-model="newTransaction.value">
+			</p>
+
+
+
+			<div class="padding">
+				<p class="date">{{ newTransaction.date | date }}</p>
+				<p class="category">Category: {{ newTransaction.category }}</p>
+				<p class="location">
+					<a href="http://maps.apple.com/?ll={{ newTransaction.location }}&q={{ newTransaction.location }}">Location</a>
+				</p>
+				<textarea class="notes" placeholder="Notes" ng-model="newTransaction.notes"></textarea>
+			</div>
+			<div class="item item-divider">
+				<div class="button-bar">
+					<a class="button button-assertive" ng-click="cancelTransaction()">Cancel</a>
+					<a class="button button-balanced" ng-click="saveTransaction()">Save</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+  </ion-content>
+</ion-view>
