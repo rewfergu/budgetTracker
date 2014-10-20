@@ -7900,7 +7900,7 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
     color: #fff; }
 #budgetOverview .item i:before {
   width: 10px; }
-#budgetOverview .variableExpenses, #budgetOverview .totalExpenses, #budgetOverview .result {
+#budgetOverview .totalExpenses, #budgetOverview .result {
   padding-left: 31px; }
 #budgetOverview .list .item.item-accordion {
   /*transition: 0.9s all linear;*/

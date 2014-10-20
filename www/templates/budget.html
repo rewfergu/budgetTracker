@@ -6,10 +6,10 @@
 				ng-click="fixedExpenseToggle()"
 		    	ng-class="{active: fixedExpenseStatus}">
 				<i class="icon" ng-class="fixedExpenseStatus ? 'ion-ios7-arrow-up' : 'ion-ios7-arrow-down'"></i>
-				Fixed Expenses: <span class="item-note">{{ info['fixed-expenses'] | currency: "$" }}</span>
-				
+				Fixed Expenses: <span class="item-note">{{ info['fixed-expenses']/100 | currency: "$" }}</span>	
 			</ion-item>
-
+			
+			<!-- fixed expenses ng-repeat -->
 			<ion-item class="item-accordion item-calm"
 		        ng-repeat="(id, item) in fixedExpenses"
 		        ng-show="fixedExpenseStatus">
@@ -19,9 +19,24 @@
 		        <ion-option-button class="button button-icon-left ion-ios7-gear" ng-click="editExpenses(fixedExpenses, id)">Edit</ion-option-button>
 		    </ion-item>
 
-			<ion-item class="variableExpenses cat">
-				Variable Expenses: <span class="item-note">{{ info['variable-expenses']/100 | currency: "$" }}</span>
+
+			<ion-item 
+				ng-click="categoryToggle()"
+				class="variableExpenses cat"
+				ng-class="{active: categoryStatus}">
+					<i class="icon" ng-class="categoryStatus ? 'ion-ios7-arrow-up' : 'ion-ios7-arrow-down'"></i>
+					Variable Expenses: <span class="item-note">{{ info['variable-expenses']/100 | currency: "$" }}</span>
 			</ion-item>
+
+			<!-- variable expenses ng-repeat -->
+			<ion-item class="item-accordion item-calm"
+		        ng-repeat="(id, item) in categories"
+		        ng-show="categoryStatus">
+		        <i class="ion-ios7-arrow-right"></i>
+		        {{item.name}} 
+		        <span class="item-note">{{ item.budget/100 | currency: "$" }}</span>
+		        <ion-option-button class="button button-icon-left ion-ios7-gear" ng-click="editCategories(categories, id)">Edit</ion-option-button>
+		    </ion-item>
 
 			<ion-item class="income cat">
 				<i class="ion-ios7-arrow-right"></i>
@@ -60,9 +75,11 @@
 				  <label class="item item-input">
 				    <input type="text" placeholder="Name" ng-model="editVal.name">
 				  </label>
+				  <!-- for editing category values -->
 				  <label class="item item-input" ng-hide="resetStatus">
-				    <input type="number" placeholder="Value" ng-model="editVal.val">
-				  </label>
+				    <input type="text" dollar-edit id="valueEdit" placeholder="0.00">
+				  <!-- </label> -->
+				  <!-- for resetting the budget -->
 				  <label class="item item-input" ng-show="resetStatus">
 				    <input type="text" placeholder="text goes here" ng-model="editVal.val">
 				  </label>
