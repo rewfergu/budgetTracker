@@ -1,7 +1,7 @@
 <ion-view title="Budget Tracker">
   <ion-content padding="false">
      <div class="currentTotal" data-income="{{ info.income }}" data-fixed="{{ info['fixed-expenses'] }}" >
-     	<span>{{ info.income - (info['fixed-expenses'] + info['variable-expenses']) | currency: "$" }}</span>
+     	<span>{{ (info.income - (info['fixed-expenses'] + info['variable-expenses']))/100 | currency: "$" }}</span>
      </div>
      <ion-list id="categoryList">
 		<ion-item 
@@ -18,7 +18,7 @@
 				
 				{{ cat.name }} 
 	            <span class="total item-note">
-	            	{{ cat.budget - cat.total | currency: "$" }}
+	            	{{ (cat.budget - cat.total)/100 | currency: "$" }}
 	            	<span piechart ></span>
 	            </span>
         	</div>
@@ -43,8 +43,8 @@
 				ng-click="focusInput()"
     			ng-class="inputFocus? 'active' : ''"
 				>
-				<span class="display">{{ newTransaction.value/100 | currency: "$" }}</span>
-				<input class="dollarInput" type="number" ng-model="newTransaction.value">
+				<!-- <span class="display">{{ newTransaction.value/100 | currency: "$" }}</span> -->
+				<input class="dollarInput" id="transactionInput" dollar-input placeholder="0.00">
 			</p>
 
 

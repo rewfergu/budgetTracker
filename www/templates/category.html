@@ -2,7 +2,7 @@
     <ion-content padding="false" id="transactionList">
       <ion-list id="transactionList">
 		<ion-item ng-repeat="item in transactions">
-			<p class="value">{{ item.value | currency: "$"}}</p>
+			<p class="value">{{ item.value/100 | currency: "$"}}</p>
 			<p class="date">
 				{{ item.date | date}}
 			</p>

@@ -78,43 +78,37 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 			border-top: 1px solid #ddd;
 		}
 		.dollars {
-			background: rgba(0, 0, 0, 0.29);
-			transition: all .25s;
-			width: 75%;
+			/*
 			margin: 1rem auto;
 			text-align: center;
-			border-radius: 30px;
-			padding: .75rem 0rem;
 			border-top: 1px solid rgba(0, 0, 0, 0.25);
 			border-bottom: 1px solid rgba(255, 255, 255, 0);
 			color: #fff;
 			font-size: 1.3rem;
 			font-weight: 700;
-			position: relative;
+			position: relative;*/
 			.display {
 				position: relative;
 			}
 			.dollarInput {
-				background: transparent;
+				background: rgba(0, 0, 0, 0.29);
+				transition: all .25s;
 				color: #fff;
 				font-size: 1.3rem;
 				font-weight: 700;
-				position: absolute;
-				right: 0px;
-				top: 0%;
-				color: rgba(0,0,0,0);
-				display: inline-block;
-				height: 100%;
-				width: 100%;
-				/*border: 1px dotted green;*/
-				text-align: right;
+				padding: .75rem 0rem;
+				width: 75%;
+				border-radius: 30px;
+				text-align: center;
+				display: block;
+				border: none;
+				margin: 0 auto;
 				&:focus {
-					border: 1px solid red;
-					top: -999rem;
+					background-color: $balanced;
 				}
-			}
-			&.active {
-				background-color: $balanced;
+				&::-webkit-input-placeholder {
+				   color: #fff;
+				}
 			}
 		}
 		.date {

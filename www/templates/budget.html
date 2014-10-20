@@ -15,32 +15,32 @@
 		        ng-show="fixedExpenseStatus">
 		        <i class="ion-ios7-arrow-right"></i>
 		        {{item.name}} 
-		        <span class="item-note">{{ item.total | currency: "$" }}</span>
+		        <span class="item-note">{{ item.total/100 | currency: "$" }}</span>
 		        <ion-option-button class="button button-icon-left ion-ios7-gear" ng-click="editExpenses(fixedExpenses, id)">Edit</ion-option-button>
 		    </ion-item>
 
 			<ion-item class="variableExpenses cat">
-				Variable Expenses: <span class="item-note">{{ info['variable-expenses'] | currency: "$" }}</span>
+				Variable Expenses: <span class="item-note">{{ info['variable-expenses']/100 | currency: "$" }}</span>
 			</ion-item>
 
 			<ion-item class="income cat">
 				<i class="ion-ios7-arrow-right"></i>
-				Income: <span class="item-note">{{ info.income | currency: "$" }}</span>
+				Income: <span class="item-note">{{ info.income/100 | currency: "$" }}</span>
 				<ion-option-button class="button button-icon-left ion-ios7-gear" ng-click="edit(info, 'income')">Edit</ion-option-button>
 			</ion-item>
 
 			<ion-item class="totalExpenses cat">
-				Fixed + Variable: <span class="item-note">{{ info['fixed-expenses'] + info['variable-expenses'] | currency: "$" }}</span>
+				Fixed + Variable: <span class="item-note">{{ (info['fixed-expenses'] + info['variable-expenses'])/100 | currency: "$" }}</span>
 			</ion-item>
 
 			<ion-item class="offset cat">
 				<i class="ion-ios7-arrow-right"></i>
-				Offset <span class="item-note">{{ info['offset'] | currency: "$" }}</span>
+				Offset <span class="item-note">{{ info['offset']/100 | currency: "$" }}</span>
 				<ion-option-button class="button button-icon-left ion-ios7-gear" ng-click="edit(info, 'offset')">Edit</ion-option-button>
 			</ion-item>
 
 			<ion-item class="result cat">
-				Result: <span class="item-note">{{ info.income - (info['fixed-expenses'] + info['variable-expenses'] + info['offset']) | currency: "$" }}</span>
+				Result: <span class="item-note">{{ (info.income - (info['fixed-expenses'] + info['variable-expenses'] + info['offset']))/100 | currency: "$" }}</span>
 			</ion-item>
 
 			<ion-item class="item-button-right">

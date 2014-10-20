@@ -13,7 +13,7 @@ budgetTracker.controller('CategoriesCtrl', function($scope, $rootScope, $state, 
 
   $scope.newTransaction = {
   	category: '',
-  	value: 0,
+  	value: '',
   	location: '',
   	notes: '',
   	date: Date.now()
@@ -65,6 +65,7 @@ budgetTracker.controller('CategoriesCtrl', function($scope, $rootScope, $state, 
 
   	$scope.editStatus = false;
     $scope.inputFocus = false;
+    document.getElementById('transactionInput').value = '';
   	$scope.newTransaction = {
 	  	name: '',
 	  	value: '',
@@ -76,6 +77,7 @@ budgetTracker.controller('CategoriesCtrl', function($scope, $rootScope, $state, 
   $scope.cancelTransaction = function() {
   	$scope.editStatus = false;
     $scope.inputFocus = false;
+    document.getElementById('transactionInput').value = '';
   	$scope.newTransaction = {
 	  	name: '',
 	  	value: '',
