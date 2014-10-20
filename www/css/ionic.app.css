@@ -7841,7 +7841,17 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
     .editForm .card .item-divider {
       text-align: center; }
     .editForm .card .item {
-      font-size: 14px; }
+      font-size: 14px;
+      padding: 0;
+      border: none;
+      margin-bottom: 1rem; }
+      .editForm .card .item:last-child {
+        margin-bottom: 0; }
+      .editForm .card .item input[type="text"] {
+        padding-left: 1rem;
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 1rem;
+        border: none; }
     .editForm .card .item.name {
       border-top: 1px solid #ddd; }
     .editForm .card .dollars {

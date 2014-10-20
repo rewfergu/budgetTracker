@@ -73,6 +73,18 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 		}
 		.item {
 			font-size: 14px;
+			padding: 0;
+			border: none;
+			margin-bottom: 1rem;
+			&:last-child {
+				margin-bottom: 0;
+			}
+			input[type="text"] {
+				padding-left: 1rem;
+				background: rgba(0,0,0,.1);
+				border-radius: 1rem;
+				border: none;
+			}
 		}
 		.item.name {
 			border-top: 1px solid #ddd;
