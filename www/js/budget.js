@@ -87,56 +87,56 @@ budgetTracker.controller('BudgetCtrl', function($scope, $rootScope, $location, $
           console.log(inputField.value);
       });
     };
-    
-    $scope.editExpenses = function(location, id) {
-      $scope.editStatus = true;
-      $scope.editMode = 'Edit Expense';
-      console.log(location);
-      $scope.editVal.location = location;
-      $scope.editVal.name = location[id].name;
-      $scope.editVal.val = location[id].total.toString();
-      $scope.editVal.id = id;
 
-      var inputField = document.getElementById('valueEdit');
-      var dollars = $scope.editVal.val.slice(0,-2);
-      var cents = $scope.editVal.val.slice(-2);
-      if ($scope.editVal.val.length === 1) {
-        inputField.value = '00.0' + cents;
-      } else if ($scope.editVal.val.length === 2) {
-        inputField.value = '00.' + cents;
-      } else {
-        inputField.value = dollars + '.' + cents;
-      }
-      console.log(inputField.value);
-    };
+    // $scope.editExpenses = function(location, id) {
+    //   $scope.editStatus = true;
+    //   $scope.editMode = 'Edit Expense';
+    //   console.log(location);
+    //   $scope.editVal.location = location;
+    //   $scope.editVal.name = location[id].name;
+    //   $scope.editVal.val = location[id].total.toString();
+    //   $scope.editVal.id = id;
+    //
+    //   var inputField = document.getElementById('valueEdit');
+    //   var dollars = $scope.editVal.val.slice(0,-2);
+    //   var cents = $scope.editVal.val.slice(-2);
+    //   if ($scope.editVal.val.length === 1) {
+    //     inputField.value = '00.0' + cents;
+    //   } else if ($scope.editVal.val.length === 2) {
+    //     inputField.value = '00.' + cents;
+    //   } else {
+    //     inputField.value = dollars + '.' + cents;
+    //   }
+    //   console.log(inputField.value);
+    // };
 
-    $scope.editCategories = function(location, id) {
-      console.log(id);
-
-      $scope.editStatus = true;
-      $scope.editMode = 'Edit Category';
-      console.log(location);
-      $scope.editVal.location = location;
-      $scope.editVal.name = location[id].name;
-      $scope.editVal.val = location[id].budget.toString();
-      $scope.editVal.id = id;
-
-      var inputField = document.getElementById('valueEdit');
-      var dollars = $scope.editVal.val.slice(0,-2);
-      var cents = $scope.editVal.val.slice(-2);
-      if ($scope.editVal.val.length === 1) {
-        inputField.value = '00.0' + cents;
-      } else if ($scope.editVal.val.length === 2) {
-        inputField.value = '00.' + cents;
-      } else {
-        inputField.value = dollars + '.' + cents;
-      }
-      console.log(inputField.value);
-    };
+    // $scope.editCategories = function(location, id) {
+    //   console.log(id);
+    //
+    //   $scope.editStatus = true;
+    //   $scope.editMode = 'Edit Category';
+    //   console.log(location);
+    //   $scope.editVal.location = location;
+    //   $scope.editVal.name = location[id].name;
+    //   $scope.editVal.val = location[id].budget.toString();
+    //   $scope.editVal.id = id;
+    //
+    //   var inputField = document.getElementById('valueEdit');
+    //   var dollars = $scope.editVal.val.slice(0,-2);
+    //   var cents = $scope.editVal.val.slice(-2);
+    //   if ($scope.editVal.val.length === 1) {
+    //     inputField.value = '00.0' + cents;
+    //   } else if ($scope.editVal.val.length === 2) {
+    //     inputField.value = '00.' + cents;
+    //   } else {
+    //     inputField.value = dollars + '.' + cents;
+    //   }
+    //   console.log(inputField.value);
+    // };
 
     $scope.saveValues = function() {
       if ($scope.editMode === 'Edit Info') {
-        $scope.editVal.location[$scope.editVal.name] = $scope.editVal.val;
+        $scope.editVal.location[$scope.editVal.name] = $scope.editVal.val/1;
         $scope.editVal.location.$save();
         $scope.editVal = $scope.resetVal;
         $scope.editStatus = false;
@@ -189,7 +189,7 @@ budgetTracker.controller('BudgetCtrl', function($scope, $rootScope, $location, $
         }
         console.log($scope.categories);
       });
-      
+
       console.log('budget has been reset');
     };
 

@@ -7,7 +7,7 @@
 		<ion-item 
 			ng-repeat="cat in budget"
 			class="categoryLink" 
-            ng-click ="addTransaction(cat.name, cat.total)">
+            ng-click="addTransaction(cat.name, cat.total)">
 			
 			<div class="label" 
 				data-category="{{ cat.name }}" 
@@ -35,20 +35,13 @@
 	</ion-list>
 
 	<div class="editForm" ng-class="{active: editStatus}">
-		<div class="card">
+		<div class="list card">
 			<div class="item item-divider">
 				Add Transaction
 			</div>
-			<p  class="dollars"
-				ng-click="focusInput()"
-    			ng-class="inputFocus? 'active' : ''"
-				>
-				<!-- <span class="display">{{ newTransaction.value/100 | currency: "$" }}</span> -->
+			<div class="dollars">
 				<input class="dollarInput" id="transactionInput" dollar-input placeholder="0.00">
-			</p>
-
-
-
+			</div>
 			<div class="padding">
 				<p class="date">{{ newTransaction.date | date }}</p>
 				<p class="category">Category: {{ newTransaction.category }}</p>
@@ -57,7 +50,7 @@
 				</p>
 				<textarea class="notes" placeholder="Notes" ng-model="newTransaction.notes"></textarea>
 			</div>
-			<div class="item item-divider">
+			<div class="item item-divider footer">
 				<div class="button-bar">
 					<a class="button button-assertive" ng-click="cancelTransaction()">Cancel</a>
 					<a class="button button-balanced" ng-click="saveTransaction()">Save</a>

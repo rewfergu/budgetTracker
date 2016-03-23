@@ -1,26 +1,26 @@
 <ion-view title="Budget Overview">
   	<ion-content id="budgetOverview">
 		<ion-list class="budgetList">
-			
+
 			<ion-item class="fixedExpenses cat"
 				ng-click="fixedExpenseToggle()"
 		    	ng-class="{active: fixedExpenseStatus}">
 				<i class="icon" ng-class="fixedExpenseStatus ? 'ion-ios7-arrow-up' : 'ion-ios7-arrow-down'"></i>
-				Fixed Expenses: <span class="item-note">{{ info['fixed-expenses']/100 | currency: "$" }}</span>	
+				Fixed Expenses: <span class="item-note">{{ info['fixed-expenses']/100 | currency: "$" }}</span>
 			</ion-item>
-			
+
 			<!-- fixed expenses ng-repeat -->
 			<ion-item class="item-accordion item-calm"
 		        ng-repeat="(id, item) in fixedExpenses"
 		        ng-show="fixedExpenseStatus">
 		        <i class="ion-ios7-arrow-right"></i>
-		        {{item.name}} 
+		        {{item.name}}
 		        <span class="item-note">{{ item.total/100 | currency: "$" }}</span>
 		        <ion-option-button class="button button-icon-left ion-ios7-gear" ng-click="editExpenses(fixedExpenses, id)">Edit</ion-option-button>
 		    </ion-item>
 
 
-			<ion-item 
+			<ion-item
 				ng-click="categoryToggle()"
 				class="variableExpenses cat"
 				ng-class="{active: categoryStatus}">
@@ -33,7 +33,7 @@
 		        ng-repeat="(id, item) in categories"
 		        ng-show="categoryStatus">
 		        <i class="ion-ios7-arrow-right"></i>
-		        {{item.name}} 
+		        {{item.name}}
 		        <span class="item-note">{{ item.budget/100 | currency: "$" }}</span>
 		        <ion-option-button class="button button-icon-left ion-ios7-gear" ng-click="editCategories(categories, id)">Edit</ion-option-button>
 		    </ion-item>

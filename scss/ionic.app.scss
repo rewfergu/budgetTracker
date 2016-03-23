@@ -66,14 +66,13 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 	-webkit-transform: translate(100%, 0%);
 	transition: -webkit-transform .5s, background 3s;
 	.card {
-		background: #fff;
+		background: hsla(100, 100%, 100%, 1);
 		box-shadow: 0px 0px 20px rgba(0,0,0,.75);
 		.item-divider {
 			text-align: center;
 		}
 		.item {
 			font-size: 14px;
-			padding: 0;
 			border: none;
 			margin-bottom: 1rem;
 			&:last-child {
@@ -85,6 +84,10 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 				border-radius: 1rem;
 				border: none;
 			}
+		}
+		.footer {
+			padding-left: 10px;
+			padding-right: 10px;
 		}
 		.item.name {
 			border-top: 1px solid #ddd;
@@ -180,7 +183,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 .currentTotal {
 	padding: 1rem;
 	/*background: $stable;*/
-	background: white;
+	background: transparent;
 	span {
 		display: block;
 		text-align: center;

@@ -1,5 +1,6 @@
 budgetTracker.directive('dollarInput', function() {
     return function(scope, element, attrs) {
+
       var processValue = function() {
           var dollars = scope.newTransaction.value.slice(0,-2);
           var cents = scope.newTransaction.value.slice(-2);

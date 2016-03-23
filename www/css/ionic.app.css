@@ -7836,13 +7836,12 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
   -webkit-transform: translate(100%, 0%);
   transition: -webkit-transform 0.5s, background 3s; }
   .editForm .card {
-    background: #fff;
+    background: white;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.75); }
     .editForm .card .item-divider {
       text-align: center; }
     .editForm .card .item {
       font-size: 14px;
-      padding: 0;
       border: none;
       margin-bottom: 1rem; }
       .editForm .card .item:last-child {
@@ -7852,6 +7851,9 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
         background: rgba(0, 0, 0, 0.1);
         border-radius: 1rem;
         border: none; }
+    .editForm .card .footer {
+      padding-left: 10px;
+      padding-right: 10px; }
     .editForm .card .item.name {
       border-top: 1px solid #ddd; }
     .editForm .card .dollars {
@@ -7921,7 +7923,7 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
 .currentTotal {
   padding: 1rem;
   /*background: $stable;*/
-  background: white; }
+  background: transparent; }
   .currentTotal span {
     display: block;
     text-align: center;

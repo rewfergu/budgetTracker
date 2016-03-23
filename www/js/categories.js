@@ -6,8 +6,9 @@ budgetTracker.controller('CategoriesCtrl', function($scope, $rootScope, $state, 
 
   $scope.budget = fbutil.syncObject('categories');
   $scope.info = fbutil.syncObject('info');
-  
-  
+
+  var inputField = document.getElementById('transactionInput');
+
   $scope.currentCategory = null;
   $scope.editStatus = false;
 
@@ -19,19 +20,10 @@ budgetTracker.controller('CategoriesCtrl', function($scope, $rootScope, $state, 
   	date: Date.now()
   };
 
-  $scope.inputFocus = false;
-  $scope.focusInput = function() {
-    //var el = document.getElementById("dollarInput");
-    //el.focus();
-    $scope.inputFocus = true;
-    //console.log(el);
-  }
-
   $scope.addTransaction = function(name, total) {
   	$scope.editStatus = true;
   	$scope.newTransaction.category = name;
   	$scope.currentCategory = fbutil.syncArray('transactions/' + name);
-  	console.log($scope.currentCategory);
   	$scope.newTransaction.date = Date.now();
   	budget.categoryTotal = total;
   	navigator.geolocation.getCurrentPosition(function (position) {
@@ -39,12 +31,12 @@ budgetTracker.controller('CategoriesCtrl', function($scope, $rootScope, $state, 
 	    $scope.$apply(function(){
 	  		$scope.newTransaction.location = currentLocation;
 	  	});
-	});
+    });
   }
 
   $scope.saveTransaction = function() {
   	// convert entered data into a number we can use
-  	$scope.newTransaction.value = $scope.newTransaction.value/100;
+  	$scope.newTransaction.value = $scope.newTransaction.value/1;
   	console.log('Item value: ' + $scope.newTransaction.value);
   	console.log('Category total: ' + budget.categoryTotal);
 
@@ -52,7 +44,7 @@ budgetTracker.controller('CategoriesCtrl', function($scope, $rootScope, $state, 
   	// append this info to the transaction list
   	$scope.currentCategory.$add($scope.newTransaction);
 
-  	// add the current value to the category total 
+  	// add the current value to the category total
   	var tempTotalCategory = budget.categoryTotal + $scope.newTransaction.value;
 
   	// update the category total
@@ -65,7 +57,7 @@ budgetTracker.controller('CategoriesCtrl', function($scope, $rootScope, $state, 
 
   	$scope.editStatus = false;
     $scope.inputFocus = false;
-    document.getElementById('transactionInput').value = '';
+    inputField.value = '';
   	$scope.newTransaction = {
 	  	name: '',
 	  	value: '',
@@ -77,7 +69,7 @@ budgetTracker.controller('CategoriesCtrl', function($scope, $rootScope, $state, 
   $scope.cancelTransaction = function() {
   	$scope.editStatus = false;
     $scope.inputFocus = false;
-    document.getElementById('transactionInput').value = '';
+    inputField.value = '';
   	$scope.newTransaction = {
 	  	name: '',
 	  	value: '',
